@@ -35,11 +35,11 @@ class About(Screen):
                 f.close()
 
                 driverdate = self.getDriverInstalledDate()
-                if driverdate == 'unknown':
+                         if driverdate == 'unknown':
                 driverdate = self.getDriverInstalledDate_proxy()
                 self['DriverVersion'] = StaticText(_('DVB drivers: ') + driverdate)
                 self['KernelVersion'] = StaticText(_('Kernel version: ') + self.getKernelVersionString())
-                self['FPVersion'] = StaticText('Support: REDOUANE red13@yahoo.com')
+                self['FPVersion'] = StaticText('Support: red13@yahoo.com')
                 self['CpuInfo'] = StaticText(_('CPU: ') + self.getCPUInfoString())
 
 		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
@@ -110,39 +110,39 @@ class About(Screen):
 			})
 
         def getCPUInfoString(self):
-            try:
-                cpu_count = 0
+                try:
+                        cpu_count = 0
                 for line in open('/proc/cpuinfo').readlines():
-                    line = [ x.strip() for x in line.strip().split(':') ]
+                        line = [ x.strip() for x in line.strip().split(':') ]
                 if line[0] == 'system type':
-                    processor = line[1].split()[0]
+                        processor = line[1].split()[0]
                 if line[0] == 'cpu MHz':
-                    cpu_speed = '%1.0f' % float(line[1])
-                    cpu_count += 1
+                        cpu_speed = '%1.0f' % float(line[1])
+                        cpu_count += 1
 
                 return '%s %s MHz %d cores' % (processor, cpu_speed, cpu_count)
             except:
                 return _('undefined')
 
         def getDriverInstalledDate(self):
-            try:
-                driver = os.popen('opkg list-installed | grep vuplus-dvb-modules').read().strip()
-                driver = driver.split('-')
+                try:
+                        driver = os.popen('opkg list-installed | grep vuplus-dvb-modules').read().strip()
+                        driver = driver.split('-')
                 return driver[5]
             except:
                 return 'unknown'
 
         def getDriverInstalledDate_proxy(self):
-            try:
-                driver = os.popen('opkg list-installed | grep vuplus-dvb-proxy').read().strip()
-                driver = driver.split('-')
-                driver = driver[4].split('.')
+                try:
+                        driver = os.popen('opkg list-installed | grep vuplus-dvb-proxy').read().strip()
+                        driver = driver.split('-')
+                        driver = driver[4].split('.')
                 return driver[0]
             except:
                 return _('unknown')
 
         def getKernelVersionString(self):
-            try:
+                try:
                 return open('/proc/version', 'r').read().split(' ', 4)[2].split('-', 2)[0]
             except:
                 return _('unknown')
