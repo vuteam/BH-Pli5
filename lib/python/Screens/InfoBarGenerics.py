@@ -661,7 +661,7 @@ class InfoBarNumberZap:
 				else:
 					self.servicelist.recallPrevService()
 # End		
-                 	elif len(self.servicelist.history) > 1:
+                 	if len(self.servicelist.history) > 1:
 				self.checkTimeshiftRunning(self.recallPrevService)
 		else:
 			if self.has_key("TimeshiftActions") and self.timeshiftEnabled():
