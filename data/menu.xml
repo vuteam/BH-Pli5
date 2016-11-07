@@ -13,6 +13,14 @@
 	<code> .. code .. </code>
 		"exec"s code
 -->
+	        <item level="0" weight="1" text="Teleportation" entryID="blackhole_red"><screen module="BhRed" screen="BhRedp_main" /></item>
+		<item level="0" weight="2" text="Black Hole apps" entryID="blackhole_extra"><screen module="BhSettings" screen="DeliteSettings" /></item>
+		<item level="0" weight="3" text="Plugins" entryID="plugin_selection"><screen module="PluginBrowser" screen="PluginBrowser" /></item>
+		<item level="0" weight="4" text="Addons" entryID="bh_addons"><screen module="BhAddons" screen="DeliteAddons" /></item>
+		<item level="0" weight="5" text="Epg Panel" entryID="epg_panel"><screen module="BhEpgPanel" screen="DeliteEpgPanel" /></item>
+		<menu level="0" weight="6" text="Backup Menu" entryID="backup_screen">
+			<id val="bhbackup" /> 
+		</menu>		
 		<item level="0" text="Timer" entryID="timer_edit"><screen module="TimerEdit" screen="TimerEditList"/></item>
 		<item level="1" text="VCR scart" entryID="scart_switch" configcondition="config.usage.show_vcr_scart" requires="ScartSwitch"><code>self.session.scart.VCRSbChanged(3)</code></item>
 
@@ -74,16 +82,8 @@ def msgClosed(ret):
 		_exit(0)
 self.session.openWithCallback(msgClosed, FactoryReset)
 </code>
-                </menu>
-		<item level="0" weight="1" text="Teleportation" entryID="blackhole_red"><screen module="BhRed" screen="BhRedp_main" /></item>
-		<item level="0" weight="2" text="Black Hole apps" entryID="blackhole_extra"><screen module="BhSettings" screen="DeliteSettings" /></item>
-		<item level="0" weight="3" text="Plugins" entryID="plugin_selection"><screen module="PluginBrowser" screen="PluginBrowser" /></item>
-		<item level="0" weight="4" text="Addons" entryID="bh_addons"><screen module="BhAddons" screen="DeliteAddons" /></item>
-		<item level="0" weight="5" text="Epg Panel" entryID="epg_panel"><screen module="BhEpgPanel" screen="DeliteEpgPanel" /></item>
-		<menu level="0" weight="6" text="Backup Menu" entryID="backup_screen">
-			<id val="bhbackup" /> 
-			</item>
-			<item weight="15" level="0" text="Software update" entryID="software_update"><screen module="SoftwareUpdate" screen="UpdatePlugin"/></item>
+                        </item>
+                        <item weight="15" level="0" text="Software update" entryID="software_update"><screen module="SoftwareUpdate" screen="UpdatePlugin"/></item>
 		</menu>
 		<menu text="Black Hole Shutdown" entryID="standby_restart_list">
 			<id val="shutdown"/>
