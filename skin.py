@@ -75,6 +75,7 @@ def skin_user_skinname():
 # so the first screen found will be used.
 
 # example: loadSkin("nemesis_greenline/skin.xml")
+DEFAULT_SKIN = 'skin.xml'
 config.skin = ConfigSubsection()
 config.skin.primary_skin = ConfigText(default = "skin.xml")
 config.skin.xres = ConfigInteger(default = 0)
