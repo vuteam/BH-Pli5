@@ -4,14 +4,10 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 datarootdir=@datarootdir@
 
-if [ -x @bindir@/showiframe ]; then
-	if [ -f @sysconfdir@/enigma2/backdrop.mvi ]; then
-		@bindir@/showiframe @sysconfdir@/enigma2/backdrop.mvi
-	elif [ -f @sysconfdir@/enigma2/bootlogo.mvi ]; then
-		@bindir@/showiframe @sysconfdir@/enigma2/bootlogo.mvi
-	elif [ -f @datadir@/bootlogo.mvi ]; then
-		@bindir@/showiframe @datadir@/bootlogo.mvi
-	fi
+/bin/jump_screen.sh
+
+if [ -x /usr/bin/showiframe -a -f /usr/share/backdrop.mvi ]; then
+	/usr/bin/showiframe /usr/share/backdrop.mvi
 fi
 
 # hook to execute scripts always before enigma2 start
