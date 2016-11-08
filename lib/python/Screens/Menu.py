@@ -80,41 +80,41 @@ class Menu(Screen, ProtectedScreen):
             elif module == 'Blackhole.BhAddons':
                 self.session.openWithCallback(self.menuClosed, DeliteAddons)
             elif module == 'Blackhole.BhRed':
-            exec 'from Blackhole.BhUtils import BhU_check_proc_version'
-            flash = True
-            mounted = False
-            bh_ver = BhU_check_proc_version()
-            un_ver = bh_ver
-            f = open('/proc/mounts', 'r')
-            for line in f.readlines():
-                if line.find('/universe') != -1:
-                    if line.find('ext') != -1:
-                        mounted = True
+                exec 'from Blackhole.BhUtils import BhU_check_proc_version'
+                flash = True
+                mounted = False
+                bh_ver = BhU_check_proc_version()
+                un_ver = bh_ver
+                f = open('/proc/mounts', 'r')
+                for line in f.readlines():
+                    if line.find('/universe') != -1:
+                        if line.find('ext') != -1:
+                            mounted = True
 
-            f.close()
-            if fileExists('/.meoinfo'):
-                flash = False
-            if fileExists('/.bainfo'):
-                flash = False
-            if flash == True:
-                if mounted == True:
-                    if fileExists('/universe/.buildv'):
-                        f = open('/universe/.buildv', 'r')
-                        un_ver = f.readline().strip()
-                        f.close()
+                f.close()
+                if fileExists('/.meoinfo'):
+                    flash = False
+                if fileExists('/.bainfo'):
+                    flash = False
+                if flash == True:
+                    if mounted == True:
+                        if fileExists('/universe/.buildv'):
+                            f = open('/universe/.buildv', 'r')
+                            un_ver = f.readline().strip()
+                            f.close()
+                        else:
+                            out = open('/universe/.buildv', 'w')
+                            out.write(bh_ver)
+                            out.close()
+                            system('chmod a-w /universe/.buildv')
+                        if un_ver == bh_ver:
+                            self.session.openWithCallback(self.menuClosed, BhRedPanel)
+                        else:
+                            self.session.openWithCallback(self.menuClosed, BhRedWrong)
                     else:
-                        out = open('/universe/.buildv', 'w')
-                        out.write(bh_ver)
-                        out.close()
-                        system('chmod a-w /universe/.buildv')
-                    if un_ver == bh_ver:
-                        self.session.openWithCallback(self.menuClosed, BhRedPanel)
-                    else:
-                        self.session.openWithCallback(self.menuClosed, BhRedWrong)
+                        self.session.openWithCallback(self.menuClosed, BhRedDisabled, '0')
                 else:
-                    self.session.openWithCallback(self.menuClosed, BhRedDisabled, '0')
-            else:
-                self.session.openWithCallback(self.menuClosed, BhRedDisabled, 'flash')
+                    self.session.openWithCallback(self.menuClosed, BhRedDisabled, 'flash')
 
 	def nothing(self): #dummy
 		pass
