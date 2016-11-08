@@ -598,8 +598,7 @@ class DeliteDevicesPanel(Screen):
                 pix = mypath + 'icons/dev_hdd.png'
         return (name, pix)
 
-Dreambox
-def get_Dsize(self, device, partition):
+    def get_Dsize(self, device, partition):
         size = '0'
         filename = '/sys/block/%s/%s/size' % (device, partition)
         if fileExists(filename):
