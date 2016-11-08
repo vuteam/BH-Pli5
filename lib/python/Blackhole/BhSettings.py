@@ -598,7 +598,8 @@ class DeliteDevicesPanel(Screen):
                 pix = mypath + 'icons/dev_hdd.png'
         return (name, pix)
 
-    def get_Dsize(self, device, partition):
+Dreambox
+def get_Dsize(self, device, partition):
         size = '0'
         filename = '/sys/block/%s/%s/size' % (device, partition)
         if fileExists(filename):
@@ -733,7 +734,7 @@ class Bp_UsbFormat(Screen):
     def __init__(self, session):
         Screen.__init__(self, session)
         msg = _('This wizard will help you to format Usb mass storage devices for Linux.\n')
-        msg += _('Please be sure that your usb drive is NOT CONNECTED to your Dreambox box before you continue.\n')
+        msg += _('Please be sure that your usb drive is NOT CONNECTED to your ET-7000Mini box before you continue.\n')
         msg += _('If your usb drive is connected and mounted you have to poweroff your box, remove the usb device and reboot.\n')
         msg += _('Press Red button to continue, when you are ready and your usb is disconnected.\n')
         self['key_red'] = Label(_('Continue ->'))
@@ -750,7 +751,7 @@ class Bp_UsbFormat(Screen):
         self.canclose = True
 
     def stepOne(self):
-        msg = _('Connect your usb storage to your Dreambox box\n')
+        msg = _('Connect your usb storage to your ET-7000Mini box\n')
         msg += _('Press Red button to continue when ready.\n\n')
         msg += _('Warning: If your usb is already connected\n')
         msg += _('to the box you have to unplug it, press\n')
@@ -883,7 +884,7 @@ class Bp_UsbFormat(Screen):
         menu = []
         menu.append((_('ext2 - recommended for USB flash memory'), 'ext2'))
         menu.append((_('ext3 - recommended for harddrives'), 'ext3'))
-        menu.append((_('ext4 - recommended for meoboot'), 'ext4'))
+        menu.append((_('ext4 - recommended for meoboot And OpenMultiBoot'), 'ext4'))
         menu.append((_('vfat - use only for media-files'), 'vfat'))
         self.session.openWithCallback(self.choiceBoxFstypeCB, ChoiceBox, title=_('Choice filesystem.'), list=menu)
 
@@ -1113,22 +1114,22 @@ class BhSpeedUp(Screen, ConfigListScreen):
          ['BhFullBackup', 'bhfullbackup'],
          ['BhPersonalBackup', 'bhpersonalbackup'],
          ['BhEpgBackup', 'bhepgbackup'],
+         ['Sat>Ip', 'enigma2-plugin-extensions-satipclient'],                
          ['AutoResolution', 'enigma2-plugin-systemplugins-autoresolution'],
          ['CommonInterfaceAssignment', 'enigma2-plugin-systemplugins-commoninterfaceassignment'],
          ['AddStreamUrl', 'enigma2-plugin-extensions-addstreamurl'],
          ['PicturePlayer', 'enigma2-plugin-extensions-pictureplayer'],
-         ['MyTube', 'enigma2-plugin-extensions-mytube'],
          ['YouTube', 'enigma2-plugin-extensions-youtube'],
-         ['RemoteChannelStreamConverter', 'enigma2-plugin-extensions-remotestreamconvert'],
          ['StreamTV', 'enigma2-plugin-extensions-streamtv'],
          ['AutoShutDown', 'enigma2-plugin-systemplugins-autoshutdown'],
          ['CrossEPG', 'enigma2-plugin-systemplugins-crossepg'],
-         ['xmodem', 'enigma2-plugin-extensions-xmodem'],
+         ['3GModemManager', 'enigma2-plugin-systemplugins-3gmodemmanager'],
          ['UI3DSetup', 'enigma2-plugin-systemplugins-ui3dsetup'],
          ['UIPositionSetup', 'enigma2-plugin-systemplugins-uipositionsetup'],
          ['WirelessAccessPoint', 'enigma2-plugin-systemplugins-wirelessaccesspoint'],
          ['DVDPlayer', 'enigma2-plugin-extensions-dvdplayer'],
-         ['OpenOpera Browser', 'enigma2-plugin-extensions-openopera']]
+         ['MiniDlna UPnP Server', 'enigma2-plugin-extensions-dlnaserver'],                
+         ['Dlna Browser (Djmount Client)', 'enigma2-plugin-extensions-dlnabrowser']]
         machine = nab_Detect_Machine()
         self.activityTimer = eTimer()
         self.activityTimer.timeout.get().append(self.updateFeed2)
@@ -1207,7 +1208,7 @@ class BhSpeedUp(Screen, ConfigListScreen):
         if self.firstrun == True:
             self.close()
         else:
-            mybox = self.session.openWithCallback(self.close, MessageBox, _('Make Enigma2 restart for the changes to take effect.\nPress ok to continue'), MessageBox.TYPE_INFO)
+            mybox = self.session.openWithCallback(self.close, MessageBox, _('Enigma2 will be now restarted for the changes to take effect.\nPress ok to continue'), MessageBox.TYPE_INFO)
             mybox.setTitle(_('Info'))
 
     def hrestEn(self, answer):
