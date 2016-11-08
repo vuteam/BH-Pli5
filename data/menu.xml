@@ -31,13 +31,12 @@
 			<item level="2" text="Streaming clients info" entryID="streaming_clients_info_screen"><screen module="StreamingClientsInfo"/></item>
 		</menu>
 
-<!--		<item level="1" text="Plugins" entryID="plugin_selection"><screen module="PluginBrowser" screen="PluginBrowser"/></item>-->
 		<menu level="0" text="Setup" flushConfigOnClose="1" entryID="setup_selection" >
 			<id val="setup"/>
 			<menu weight="7" level="0" text="Service searching" entryID="service_searching_selection">
 				<id val="scan"/>
 				<item text="Tuner configuration" entryID="tuner_setup"><screen module="Satconfig" screen="NimSelection"/></item>
-                                <item text="Default services lists" entryID="default_lists"><screen module="ScanSetup" screen="DefaultSatLists" /></item> 
+<!--                            <item text="Default services lists" entryID="default_lists"><screen module="ScanSetup" screen="DefaultSatLists" /></item>--> 
 				<item text="Automatic scan" entryID="auto_scan"><screen module="ScanSetup" screen="ScanSimple"/></item>
 				<item text="Manual scan" entryID="manual_scan"><screen module="ScanSetup"/></item>
 			</menu>
